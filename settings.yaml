@@ -1,0 +1,75 @@
+# 2021 Vadym Gryshchuk (vadym.gryshchuk@protonmail.com).
+
+# SSL training (example):
+# 'run_feature_extractor.py'
+
+dataset:
+  name: 'ncaltech12'   # ['ncaltech12', 'ncaltech256', 'ncaltech101', 'nmnist']
+  event_representation: 'histogram'  # ['histogram', 'voxel']
+  nr_events_window: 50000  # The number of events in a window. 0 means that all events will be selected. Only for SCNN and histogram
+method:
+  name: 'simclr'  # ['simclr', 'classifier']. 'simclr' - self-supervised learning; 'classifier' - linear evaluation or supervised learning with Phased LSTM
+  backbone: 'scnn'  # ['scnn', 'plstm']  'plstm' (Phased LSTM) can be used only with 'classifier'
+  seed: 10
+  checkpoint_save_period: 10
+  epochs: 100
+  batch_size: 256  # the number of samples per iteration
+checkpoint:
+  epoch_start: 0
+  file: ''
+  id: ''  # An additional identifier that is appended to the name of a checkpoint file
+hardware:
+  num_workers: 0  # The number used to load data
+  gpu_device: 0  # [0, '0, 1, 2, ...']  # '0,1,2, ...' in case of multiple GPUs (only for the SCNN backbone)
+feature_extraction:
+  out_folder: './data/extracted_features/'
+
+
+# SSL linear evaluation (example):
+# 'run_linear_evaluation.py'
+
+#dataset:
+#  name: 'ncaltech12'   # ['ncaltech12', 'ncaltech256', 'ncaltech101', 'nmnist']
+#  event_representation: 'histogram'  # ['histogram', 'voxel']
+#  nr_events_window: 50000  # The number of events in a window. 0 means that all events will be selected. Only for SCNN and histogram
+#method:
+#  name: 'classifier'  # ['simclr', 'classifier']
+#  backbone: 'scnn'  # ['scnn', 'plstm']  'plstm' can be used only with 'classifier'
+#  seed: 10
+#  checkpoint_save_period: 10
+#  epochs: 100
+#  batch_size: 32  # the number of samples per iteration
+#checkpoint:
+#  epoch_start: 0
+#  file: './checkpoint/simclr/ncaltech12/simclr__ncaltech12_scnn_seed_10_batch_256_epoch_100.tar'
+#  id: ''  # An additional identifier that is appended to the name of a checkpoint file
+#hardware:
+#  num_workers: 0  # The number used to load data
+#  gpu_device: 0  # [0, '0, 1, 2, ...']  # '0,1,2, ...' in case of multiple GPUs (only for the SCNN backbone)
+#feature_extraction:
+#  out_folder: './data/extracted_features/'
+
+
+# Feature extraction (example):
+# 'extract_features.py'
+
+#dataset:
+#  name: 'ncaltech12'   # ['ncaltech12', 'ncaltech256', 'ncaltech101', 'nmnist']
+#  event_representation: 'histogram'  # ['histogram', 'voxel']
+#  nr_events_window: 50000  # The number of events in a window. 0 means that all events will be selected. Only for SCNN and histogram
+#method:
+#  name: 'simclr'  # ['simclr', 'classifier']. 'simclr' - self-supervised learning; 'classifier' - linear evaluation or supervised learning with Phased LSTM
+#  backbone: 'scnn'  # ['scnn', 'plstm']  'plstm' (Phased LSTM) can be used only with 'classifier'
+#  seed: 10
+#  checkpoint_save_period: 10
+#  epochs: 100
+#  batch_size: 100  # the number of samples per iteration
+#checkpoint:
+#  epoch_start: 0
+#  file: './checkpoint/simclr/ncaltech12/simclr__ncaltech12_scnn_seed_10_batch_256_epoch_100.tar'
+#  id: ''  # An additional identifier that is appended to the name of a checkpoint file
+#hardware:
+#  num_workers: 0  # The number used to load data
+#  gpu_device: 0  # [0, '0, 1, 2, ...']  # '0,1,2, ...' in case of multiple GPUs (only for the SCNN backbone)
+#feature_extraction:
+#  out_folder: './data/extracted_features/'
