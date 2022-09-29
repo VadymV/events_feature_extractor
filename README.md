@@ -16,7 +16,7 @@ However, we utilize only SCNN trained in a sef-supervised way as feature extract
 
 The following figure illustrates the architecture.
 
-![Architecture](./architecture.svg)
+![Architecture](./architecture.png)
 
 This is the implementation for the bottom module of the architecture for Lifelong Learning.
 
