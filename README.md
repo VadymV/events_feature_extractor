@@ -1,5 +1,5 @@
 ## Lifelong Learning from Event-based Data
-### A feature extractor for lifelong learning from the event-based data.
+### A feature extractor for lifelong learning from the event-based data. See https://github.com/VadymV/events_lifelong_learning
 
 2021 Vadym Gryshchuk (vadym.gryshchuk@protonmail.com)
 
